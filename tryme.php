@@ -7,12 +7,12 @@
 
 <body>
     <?php
-        // Connect to the database
+        // Connect to the database, adjust to you necessities
         $conn = mysqli_connect("localhost","normaluser","1234", "twohours");
         
         
         // Open a file for writing the GEDCOM data
-        $gedcomFile = fopen('C:\Users\Code\Downloads\peacefam.gedcom', 'w');
+        $gedcomFile = fopen('peacefam.gedcom', 'w');
 
         if($conn!=NULL){
             print("Succesfully connected. <br><br>");
@@ -31,7 +31,7 @@
                 2 CAUS {$person['death_cause']}\n
                 1 NOTE Last words: {$person['last_words']}\n");
 
-                // Write the family connections
+                // Write the family connections, it checks if Eve
                 if ($person['parent_id'] > 0) {
                     fwrite($gedcomFile, "1 FAMC @F$i@\n
                     0 @F$i@ FAM\n
